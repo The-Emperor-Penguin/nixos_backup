@@ -118,6 +118,7 @@ in
                       pkgs.keepassxc
                       pkgs.virt-manager
                       pkgs.unstable.godot_4
+                      pkgs.unstable.blender-hip
                       pkgs.gnomeExtensions.appindicator
                       pkgs.gnomeExtensions.espresso
                       pkgs.gnomeExtensions.blur-my-shell ];
@@ -168,7 +169,7 @@ in
       };
     };
   };
-
+ 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

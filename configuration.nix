@@ -27,7 +27,12 @@ in
   programs.dconf.enable = true;
 
   # Bootloader.
+  boot.loader.timeout = 3;
+  boot.kernel.sysctl = {
+  "vm.max_map_count" = 262144;
+  };
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 5;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
@@ -143,7 +148,7 @@ in
           Homepage = {
             URL = "about:blank";
             Locked = true;
-            StartPage = "homepages-locked";
+            StartPage = "homepage-locked";
           };
           ExtensionSettings =  {
             "uBlock0@raymondhill.net" = {
@@ -164,6 +169,10 @@ in
               installation_mode = "force_installed";
               install_url = "https://addons.mozilla.org/firefox/downloads/latest/decentraleyes/latest.xpi";
             };
+            "{20fc2e06-e3e4-4b2b-812b-ab431220cada}" = {
+              installation_mode = "force_installed";
+              install_url = "https://addons.mozilla.org/firefox/downloads/latest/startpage-private-search/latest.xpi";
+            };
           };
         };
       };
@@ -176,6 +185,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    vlc
     blackbox-terminal
     rustc
     cargo
@@ -239,7 +249,7 @@ in
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "22.11"; # Did you read the comment?
+  system.stateVersion = "23.05"; # Did you read the comment?
 
   nix.gc = {
     automatic = true;

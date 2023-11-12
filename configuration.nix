@@ -51,11 +51,6 @@ in
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  fileSystems."/mnt/Games" = {
-    device = "/dev/disk/by-uuid/6a4eaf03-a44d-4cd3-b341-f7d2a3db50c3";
-    fsType = "auto";
-  };
-
   # Enable networking
   networking.networkmanager.enable = true;
 
